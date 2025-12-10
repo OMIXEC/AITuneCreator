@@ -1,26 +1,12 @@
+## Welcome to AITuneCreator
+
 ### ✅ Pre-Deployment Checklist
 
 Check that you have done the following before moving to the CircleCI deployment part:
 
 1. ✅ Dockerfile  
 2. ✅ Kubernetes Deployment file  
-3. ✅ Code Versioning using GitLab
 
-### 🚀 GitLab Project Setup and Code Versioning
-
-Make an account on [GitLab](https://gitlab.com), then create a **public project** and follow all necessary steps mentioned in the course video.
-
-Now, perform **code versioning** using GitLab by running the following commands:
-
-```bash
-git init
-git branch -M main
-git remote add origin https://gitlab.com/your-username/your-repo.git
-git add .
-git commit -m "Initial commit"
-git push origin main
-
-```
 
 ### ✅ Enable Required GCP APIs
 
@@ -95,7 +81,7 @@ Copy the output and use it as needed in environment variables or CircleCI secret
   cat gcp-key.json | base64 -w 0
   ```
 
-### ✅ Set Up LLMOps Secrets in GKE using kubectl
+### ✅ Set Up TuneCreator Secrets in GKE using kubectl
 
 1. **Access your GKE cluster:**
    - Open your GKE Console.
@@ -106,7 +92,7 @@ Copy the output and use it as needed in environment variables or CircleCI secret
    Run the following command, adjusting for your project details:
 
    ```bash
-   gcloud container clusters get-credentials llmops-cluster1 \
+   gcloud container clusters get-credentials tunecreator-cluster1 \
    --region us-central1 \
    --project gen-lang-client-0729539659
    ```
@@ -114,26 +100,26 @@ Copy the output and use it as needed in environment variables or CircleCI secret
 3. **Create a Kubernetes secret to store your LLM API key:**
 
    ```bash
-   kubectl create secret generic llmops-secrets \
+   kubectl create secret generic tunecreator-secrets \
    --from-literal=GROQ_API_KEY="your_actual_groq_api_key"
    ```
 
    > This secret will be referenced in your Kubernetes deployment file to securely fetch the `GROQ_API_KEY`.
 
 
-### ⚙️ Set Up GitLab CI/CD with `.gitlab-ci.yml`
+### ⚙️ Set   pGitHub GitLab CI/CD with `github-ci.yml/.gitlab-ci.yml`
 
-Create a `.gitlab-ci.yml` file in the root of your project directory.
+Create a `github-ci.yml/.gitlab-ci.yml` file in the root of your project directory.
 
 The CI/CD pipeline code is **already explained in the project** and available in the **GitHub repository**.
 
 📁 Simply copy the `.gitlab-ci.yml` file from there and place it in your GitLab project to enable GitLab CI/CD.
 
-✅ GitLab CI/CD setup complete.
+✅ GitHub(actions)/ GitLab CI/CD setup complete.
 
-Now Push code to Gitlab ---> Automatically triggers the pipeline or u can manually trigger it using
+Now Push code to GitHub/Gitlab ---> Automatically triggers the pipeline or u can manually trigger it using
 
- - Go to Left pane of Gitlab
+ - Go to Left pane of Github/Gitlab
  - Go to Build --> Pipelines
  - Trigger pipeline from there
 
@@ -141,7 +127,5 @@ Now Push code to Gitlab ---> Automatically triggers the pipeline or u can manual
 Your first pipeline might fail if it is  your first time in GitLab because u need to verify your account using phone number or credit card
 Do verify and again trigger the pipeline...
 
-- Now go see ur app on GKE Workloads...
-HAPPY CODING !!!!
-
+ **Autor: OMIXEC**
 ```

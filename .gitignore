@@ -1,4 +1,4 @@
 .env
 venv/
-AI_MUSIC_COMPOSER.egg-info/
+AITuneComposer.egg-info/
 gcp-key.json

@@ -7,7 +7,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 st.set_page_config(page_title="AI Music Composer",layout="centered")
-st.title("AI MUSIC COMPOSER")
+st.title("AITuneCreator")
 st.markdown("Generate AI Music by describing the style and content")
 
 

@@ -1,27 +1,27 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: llmops-app
+  name: tunecreator-app
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: llmops-app
+      app: tunecreator-app
   template:
     metadata:
       labels:
-        app: llmops-app
+        app: tunecreator-app
     spec:
       containers:
-      - name: llmops-app
-        image: us-central1-docker.pkg.dev/gen-lang-client-0729539659/llmops-repo/llmops-app:latest
+      - name: tunecreator-app
+        image: us-central1-docker.pkg.dev/gen-lang-client-0729539659/tunecreator-repo/tunecreator-app:latest
         ports:
         - containerPort: 8501
         env:
         - name: GROQ_API_KEY
           valueFrom:
             secretKeyRef:
-              name: llmops-secrets
+              name: tunecreator-secrets
               key: GROQ_API_KEY
 
 ---
@@ -29,10 +29,10 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: llmops-service
+  name: tunecreator-service
 spec:
   selector:
-    app: llmops-app
+    app: tunecreator-app
   ports:
     - protocol: TCP
       port: 80

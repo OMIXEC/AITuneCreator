@@ -4,7 +4,7 @@ with open("requirements.txt") as f:
     requirements = f.read().splitlines()
 
 setup(
-    name="AI MUSIC COMPOSER",
+    name="AITuneCreator",
     version="0.1",
     author="Sudhanshu",
     packages=find_packages(),

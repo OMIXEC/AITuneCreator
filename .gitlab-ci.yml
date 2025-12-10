@@ -8,9 +8,9 @@ stages:
 variables:
   PROJECT_ID: "gen-lang-client-0729539659"
   REGION: "us-central1"
-  REPO: "llmops-repo"
+  REPO: "tunecreator-repo"
   REGISTRY: "us-central1-docker.pkg.dev"
-  CLUSTER: "llmops"
+  CLUSTER: "tunecreator"
 
 checkout_code:
   stage: checkout
@@ -30,8 +30,8 @@ build_docker_image:
     - gcloud auth activate-service-account --key-file=gcp-key.json
     - gcloud auth configure-docker $REGISTRY
   script:
-    - docker build -t $REGISTRY/$PROJECT_ID/$REPO/llmops-app:latest .
-    - docker push $REGISTRY/$PROJECT_ID/$REPO/llmops-app:latest
+    - docker build -t $REGISTRY/$PROJECT_ID/$REPO/tunecreator-app:latest .
+    - docker push $REGISTRY/$PROJECT_ID/$REPO/tunecreator-app:latest
 
 deploy_to_gke:
   stage: deploy
